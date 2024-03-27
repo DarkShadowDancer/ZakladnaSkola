@@ -18,8 +18,8 @@ namespace ZakladnaSkola
                     if (minValue == maxValue)
                         Console.Write($"Zadaj cislo {minValue}: ");
                     else
-                        Console.Write($"Vyber z moznosti {minValue} a {maxValue}: ");
-                    if (int.TryParse(Console.ReadLine(), out input))
+                        Console.Write($"Vyber z moznosti {minValue} az {maxValue}: ");
+                    if (int.TryParse(Console.ReadKey().KeyChar.ToString(), out input))
                     {
                         if (input >= minValue && input <= maxValue)
                         {
@@ -27,12 +27,12 @@ namespace ZakladnaSkola
                         }
                         else
                         {
-                            Console.WriteLine("Invalid input. Please enter a number within the specified range.");
+                            Console.WriteLine("\nZly vstup. Prosim zadajte cislo ake je v moznostiach.");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Invalid input. Please enter a valid number.");
+                        Console.WriteLine("\nZly vstup. Prosim zadajte len cislo.");
                     }
                 }
             }

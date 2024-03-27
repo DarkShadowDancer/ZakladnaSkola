@@ -20,13 +20,13 @@ namespace ZakladnaSkola
             {
                 schoolUI.DisplayOptions(); // Call the overridden method directly
                 int choice;
-                if (int.TryParse(Console.ReadLine(), out choice))
+                if (int.TryParse(Console.ReadKey().KeyChar.ToString(), out choice))
                 {
                     HandleInput(choice);
                 }
                 else
                 {
-                    Console.WriteLine("Zla moznost skuste znova.");
+                    Console.WriteLine("\nZla moznost skuste znova.");
                 }
             }
         }
@@ -35,22 +35,19 @@ namespace ZakladnaSkola
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Creating School...");
                     // Implement logic to create a new school
                     ManazerSkoly.VytvorSkolu();
                     break;
                 case 2:
-                    Console.WriteLine("Editing School...");
                     // Implement logic to edit an existing school
                     ManazerSkoly.UpravitSkolu();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                     Console.Clear();
                     break;
                 case 3:
-                    Console.WriteLine("Deleting School...");
                     // Implement logic to delete an existing school
                     ManazerSkoly.VymazatSkolu();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                     Console.Clear();
                     break;
                 default:

@@ -27,11 +27,11 @@ namespace ZakladnaSkola
                     Console.WriteLine("Vymazat.....");
                     break;
                 case 4:
-                    Console.WriteLine("Exiting...");
+                    Console.WriteLine("\nExiting...");
                     Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Zla moznost skuste znova.");
+                    Console.WriteLine("\nZla moznost skuste znova.");
                     break;
             }
         }

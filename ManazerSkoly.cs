@@ -12,6 +12,7 @@ namespace ZakladnaSkola
         public static void VytvorSkolu()
         {
             Console.Clear();
+            Console.WriteLine("Creating School...");
             string menoSkoly = null;
             while (menoSkoly == null)
             {
@@ -27,6 +28,7 @@ namespace ZakladnaSkola
             Console.Clear();
             if (ListSkol.Skoly.Count > 0)
             {
+                Console.WriteLine("Editing School...");
                 int i = 1;
                 foreach (Skola skola in ListSkol.Skoly)
                 {
@@ -35,20 +37,25 @@ namespace ZakladnaSkola
                 }
                 Console.WriteLine("\nKtoru skolu chcete upravit? ");
                 int upravaSkoly = InputValidator.GetValidInput(1, ListSkol.Skoly.Count);
-                // -Check if the parsed value is within the range of valid options-.....Checking right in initialization ^^^^^^^
-                    upravaSkoly -= 1;
-                    UpravitSkolu(ListSkol.Skoly[upravaSkoly]);
+                //Check if the parsed value is within the range of valid options
+                //Checking right in inputvalidator
+                upravaSkoly -= 1;
+                UpravitSkolu(ListSkol.Skoly[upravaSkoly]);
+            }
+            else
+            {
+                Console.WriteLine("Pocet skol je 0 aku skolu chces upravovat? :)");
             }
         }
         public static void UpravitSkolu(Skola school)
         {
             SkolaUI.ZobrazMoznostiUprav();
             // Get user input
-            int choice = MenuSkola.ZiskatMoznost();
+            int choice = InputValidator.GetValidInput(1, 6);
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Stare meno: {0}", school.Nazov);
+                    Console.WriteLine($"\nStare meno: {school.Nazov}");
                     string newName = MenuSkola.ZiskajNoveMenoSkoly();
                     school.Nazov = newName;
                     Console.WriteLine("Meno skoly uspesne zmenene.");
@@ -70,10 +77,10 @@ namespace ZakladnaSkola
                     // You can call methods like AddClassroom from here
                     break;
                 case 6:
-                    Console.WriteLine("Exiting school editor.");
+                    Console.WriteLine("\nExiting school editor.");
                     break;
                 default:
-                    Console.WriteLine("Invalid choice. Please enter a valid option.");
+                    Console.WriteLine("Neplatna volba. Prosim zadajte platnu volbu.");
                     break;
             }
         }
@@ -82,6 +89,7 @@ namespace ZakladnaSkola
             Console.Clear();
             if (ListSkol.Skoly.Count > 0)
             {
+                Console.WriteLine("Deleting School...");
                 int i = 1;
                 foreach (Skola skola in ListSkol.Skoly)
                 {
@@ -90,15 +98,16 @@ namespace ZakladnaSkola
                 }
                 Console.WriteLine("\nKtoru skolu chcete vymazat? ");
                 int vymazatSkolu = InputValidator.GetValidInput(1, ListSkol.Skoly.Count);
-
                 // Check if the parsed value is within the range of valid options
-                if (vymazatSkolu >= 1 && vymazatSkolu <= ListSkol.Skoly.Count)
-                {
-                    vymazatSkolu -= 1;
-                    Skola skolaToRemove = ListSkol.Skoly[vymazatSkolu];
-                    ListSkol.odstranitSkolu(skolaToRemove);
-                    Console.WriteLine("Skola odstranena uspesne.");
-                }
+                //implemented it to InputValidator
+                vymazatSkolu -= 1;
+                Skola skolaToRemove = ListSkol.Skoly[vymazatSkolu];
+                ListSkol.odstranitSkolu(skolaToRemove);
+                Console.WriteLine("\nSkola odstranena uspesne.");
+            }
+            else
+            {
+                Console.WriteLine("Pocet skol je 0 aku skolu chces mazat? :)");
             }
         }
     }
